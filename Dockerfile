@@ -1,37 +1,47 @@
-# Dockerfile.alpine
-FROM mhart/alpine-node:9
-RUN apk update && \
-    apk upgrade && \
-    apk add --update ca-certificates && \
-    apk add bash git openssh chromium --update-cache --repository http://nl.alpinelinux.org/alpine/edge/community \
-    rm -rf /var/cache/apk/*
+ARG NODE_VERSION=lts
 
-# If you have native dependencies, you'll need extra tools
-# RUN apk add --no-cache make gcc g++ python
+# Dependencies
+FROM node:${NODE_VERSION}-slim as dependencies
+WORKDIR /home/node/
 
-# Setup yarn
-RUN yarn config set registry https://registry.npm.taobao.org
+RUN apt-get update
+RUN apt-get install -y build-essential python
+RUN npm install --global npm node-gyp
 
-# Create app directory and bundle app source
-RUN mkdir -p /usr/src/app
+COPY package.json *package-lock.json *.npmrc ./
 
-# use changes to package.json to force Docker not to use the cache
-# when we change our application's nodejs dependencies:
-COPY package.json /tmp/package.json
-COPY yarn.lock /tmp/yarn.lock
-RUN cd /tmp && yarn
-RUN mkdir -p /usr/src/app && cp -a /tmp/node_modules /usr/src/app/
+ARG NODE_ENV=production
+ENV NODE_ENV ${NODE_ENV}
+RUN npm ci
 
-# simple http server
-RUN yarn global add serve
+# Application
+FROM node:${NODE_VERSION}-slim as build
+WORKDIR /home/node/
 
-# From here we load our application's code in, therefore the previous docker
-# "layer" thats been cached will be used if possible
-WORKDIR /usr/src/app
-COPY . /usr/src/app
+COPY --from=dependencies /home/node/node_modules node_modules
+COPY . .
 
-RUN yarn build
-# Expose port
-EXPOSE 5000
+ENV PATH="$PATH:/home/node/node_modules/.bin"
+ENV NODE_ENV production
 
-CMD [ "serve", "-s", "./build" ]
+###
+RUN apt-get update && apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    --no-install-recommends
+# Install Google Chrome
+RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+    echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list && \
+    apt-get -yqq update && \
+    apt-get -yqq install google-chrome-stable && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN npm run build
+
+# Nginx
+FROM nginx:1.16
+
+COPY --from=build /home/node/build /var/www
+COPY conf.nginx /etc/nginx/conf.d/default.conf
