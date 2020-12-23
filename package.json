@@ -1,7 +1,7 @@
 {
   "name": "erenozkulcom",
   "version": "1.0.0",
-  "homepage": "https://erenozkulcom-nnsps.ondigitalocean.app/",
+  "homepage": "https://erenozkul.github.io/personal-site/",
   "scripts": {
     "build": "rimraf ./build && webpack --config ./webpack/webpack.production.config.babel.js --progress --profile --colors",
     "postbuild": "react-snap",
