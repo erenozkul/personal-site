@@ -9,7 +9,7 @@ const pages = [
     route: '/',
     title: 'Eren Özkul',
     heading: 'ABOUT THIS SITE',
-  },
+  }/*,TODO : GEÇİCİ AÇIKLAMA SATIRI
   {
     route: '/about',
     title: 'About | Eren Özkul',
@@ -29,7 +29,7 @@ const pages = [
     route: '/contact',
     title: 'Contact | Eren Özkul',
     heading: 'CONTACT',
-  },
+  },*/
 ];
 
 export { pages, randomString };

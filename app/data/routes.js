@@ -4,7 +4,7 @@ const data = [
     label: 'Eren Özkul',
     index: true,
   },
-  {
+  /*TODO : GEÇİCİ AÇIKLAMA SATIRI{
     path: '/about',
     label: 'About',
   },
@@ -23,7 +23,7 @@ const data = [
   {
     path: '/contact',
     label: 'Contact',
-  },
+  },*/
 ];
 
 export default data;

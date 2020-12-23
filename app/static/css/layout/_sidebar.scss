@@ -9,7 +9,9 @@
 	#sidebar {
 		margin-right: _size(section-spacing);
 		min-width: 22em;
-		width: 22em;
+		//width: 22em; TODO : GEÇİCİ AÇIKLAMA SATIRI
+		width: 100%;
+		text-align: center;
 
 		> * {
 			border-top: solid 1px _palette(border);

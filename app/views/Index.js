@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom';
 import Main from '../layouts/Main';
 
 const Index = () => (
+  <Main></Main>
+);
+
+export default Index;
+/* TODO : GEÇİCİ AÇIKLAMA SATIRI
   <Main>
     <article className="post" id="index">
       <header>
@@ -19,9 +24,6 @@ const Index = () => (
         view <Link to="/stats">site statistics</Link>, {' '}
         or <Link to="/contact">contact</Link> me.
       </p>
-      <p> Source available <a href="https://github.com/erenozkul/personal-site">here</a>.</p>
     </article>
   </Main>
-);
-
-export default Index;
+*/

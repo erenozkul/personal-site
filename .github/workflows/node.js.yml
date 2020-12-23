@@ -32,7 +32,7 @@ jobs:
       env:
         PORT: 80
         NODE_ENV: production
-        BASE_PATH: /personal-site
+        BASE_PATH: /
     - name: Test
       run: npm test
       env:
