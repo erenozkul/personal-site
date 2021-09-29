@@ -119,7 +119,7 @@ const Nav = () => {
         <p className="copyright">&copy; Eren Özkul</p>
       </section>
     </section>
-  )
+ )
 };
 
 export default Nav;
