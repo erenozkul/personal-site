@@ -31,8 +31,3 @@ jobs:
           PORT: 80
           NODE_ENV: production
           BASE_PATH: /
-      - name: Test
-        run: npm test
-        env:
-          PORT: 3000
-          NODE_ENV: development
