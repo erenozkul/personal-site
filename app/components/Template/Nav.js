@@ -1,12 +1,9 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import data from '../../data/contact';
-
-
 
 // Validates the first half of an email address.
 const validateText = (text) => {
@@ -35,8 +32,6 @@ const messages = [
   'I\'ll-stop-distracting-you-now',
   'thanks',
 ];
-
-
 
 const useInterval = (callback, delay) => {
   const savedCallback = useRef();
@@ -104,10 +99,7 @@ const Nav = () => {
 
       <section className="blurb">
         <h2>About</h2>
-        <p>Hi, I&apos;m Eren. I like building things.
-        I am a <a rel="nofollow" href="https://www.anadolu.edu.tr/">Anadolu University</a> graduate.
-        The software manager of <a rel="nofollow" href="https://brand-wallet.com">BrandWallet</a> and <a rel="nofollow" href="https://dnatech.io/">DNA</a>. Before BrandWallet I was
-        at <a rel="nofollow" href="http://www.pennabilisim.com/">Penna</a> and <a rel="nofollow" href="http://mobilizzy.com/">Mobilizzy</a>.
+        <p>Hi, I&apos;m Eren. I like building things. I am a <a rel="nofollow" href="https://www.anadolu.edu.tr/">Anadolu University</a> graduate. The software manager of <a rel="nofollow" href="https://brand-wallet.com">BrandWallet</a> and <a rel="nofollow" href="https://dnatech.io/">DNA</a>. Before BrandWallet I was at <a rel="nofollow" href="http://www.pennabilisim.com/">Penna</a> and <a rel="nofollow" href="http://mobilizzy.com/">Mobilizzy</a>.
       </p>
         <ul className="actions">
           <li>
