@@ -81,7 +81,7 @@ const Nav = () => {
   return (
     <section id="sidebar">
       <section id="intro">
-        <Link to="/" className="logo">
+          <Link to="{`${BASE_PATH}`}" className="logo">
           <img src={`${BASE_PATH}images/logo.png`} alt="" />
         </Link>
         <header>
