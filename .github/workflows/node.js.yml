@@ -30,4 +30,4 @@ jobs:
         env:
           PORT: 80
           NODE_ENV: production
-          BASE_PATH: /
+          BASE_PATH: https://erenozkul.com/
