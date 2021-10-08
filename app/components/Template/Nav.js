@@ -82,7 +82,7 @@ const Nav = () => {
     <section id="sidebar">
       <section id="intro">
         <Link to="/" className="logo">
-          <img src={`${BASE_PATH}/images/logo.png`} alt="" />
+          <img src={`/images/logo.png`} alt="" />
         </Link>
         <header>
           <h2>Eren Özkul</h2>
