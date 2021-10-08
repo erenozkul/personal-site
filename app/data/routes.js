@@ -1,6 +1,6 @@
 const data = [
   {
-    path: "",
+    path: "#",
     label: "Eren Özkul",
     index: true,
   },
